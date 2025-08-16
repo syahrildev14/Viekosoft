@@ -16,7 +16,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="bg-white text-gray-500 sticky top-0 z-50 shadow-sm">
+    <header className="bg-white text-gray-500 sticky top-0 z-[99] shadow-sm">
       <div className="mx-auto w-full flex items-center justify-between px-12 py-4">
         {/* Logo */}
         <span className="logo text-primary text-lg md:text-xl lg:text-2xl font-bold">
@@ -59,9 +59,7 @@ const Header = () => {
           >
             <Facebook size={18} />
           </a>
-          <Button>
-            Kontak
-          </Button>
+          <Button>Kontak</Button>
         </div>
 
         {/* Mobile Hamburger */}
