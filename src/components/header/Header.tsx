@@ -16,10 +16,10 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="bg-gradient-to-tl from-primary to-secondary text-white sticky top-0 z-50">
-      <div className="mx-auto w-full flex items-center justify-between px-6 py-4">
+    <header className="bg-white text-gray-500 sticky top-0 z-50 shadow-sm">
+      <div className="mx-auto w-full flex items-center justify-between px-12 py-4">
         {/* Logo */}
-        <span className="logo text-lg md:text-xl lg:text-2xl font-bold">
+        <span className="logo text-primary text-lg md:text-xl lg:text-2xl font-bold">
           Viekosoft
         </span>
 
@@ -30,12 +30,12 @@ const Header = () => {
               key={item.path}
               to={item.path}
               className={`relative group transition-colors duration-300 ${
-                location.pathname === item.path ? "text-violet-300" : ""
+                location.pathname === item.path ? "text-gray-800" : ""
               }`}
             >
               {item.name}
               <span
-                className={`absolute left-0 -bottom-1 h-[2px] bg-violet-300 rounded-full transition-all duration-300 ${
+                className={`absolute left-0 -bottom-1 h-[2px] bg-gray-800 rounded-full transition-all duration-300 ${
                   location.pathname === item.path
                     ? "w-full"
                     : "w-0 group-hover:w-full"
@@ -46,20 +46,20 @@ const Header = () => {
         </nav>
 
         {/* Desktop Sosmed + Button */}
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-2">
           <a
             href="#"
-            className="text-gray-700 hover:text-white p-2 rounded-full bg-white hover:bg-secondary shadow-xl duration-300"
+            className="text-gray-500 p-3 rounded-full border hover:bg-gray-100 duration-200"
           >
             <Instagram size={18} />
           </a>
           <a
             href="#"
-            className="text-gray-700 hover:text-white p-2 rounded-full bg-white hover:bg-secondary shadow-xl duration-300"
+            className="text-gray-500 p-3 rounded-full border  hover:bg-gray-100 duration-200"
           >
             <Facebook size={18} />
           </a>
-          <Button className="bg-white hover:bg-secondary hover:text-white duration-300 text-gray-700">
+          <Button>
             Kontak
           </Button>
         </div>
@@ -75,7 +75,7 @@ const Header = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden bg-primary transition-all duration-300 overflow-hidden ${
+        className={`md:hidden transition-all duration-300 overflow-hidden ${
           isOpen ? "max-h-screen py-4" : "max-h-0"
         }`}
       >
@@ -85,8 +85,8 @@ const Header = () => {
               key={item.path}
               to={item.path}
               onClick={() => setIsOpen(false)}
-              className={`text-white font-medium ${
-                location.pathname === item.path ? "text-violet-300" : ""
+              className={`text-gray-500 font-medium ${
+                location.pathname === item.path ? "text-gray-800" : ""
               }`}
             >
               {item.name}
@@ -95,13 +95,13 @@ const Header = () => {
           <div className="flex gap-3 mt-4">
             <a
               href="#"
-              className="text-gray-700 hover:text-white p-2 rounded-full bg-white hover:bg-secondary shadow-xl duration-300"
+              className="text-gray-500 p-3 rounded-full border hover:bg-gray-100"
             >
               <Instagram size={18} />
             </a>
             <a
               href="#"
-              className="text-gray-700 hover:text-white p-2 rounded-full bg-white hover:bg-secondary shadow-xl duration-300"
+              className="text-gray-500 p-3 rounded-full border hover:bg-gray-100 duration-200"
             >
               <Facebook size={18} />
             </a>
