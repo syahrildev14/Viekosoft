@@ -279,9 +279,11 @@ const Tentang = () => {
         <section className="relative py-20 px-6 bg-gradient-to-b from-white via-gray-50 to-blue-50">
           <div className="max-w-6xl mx-auto text-center mb-12">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-800">
-              Visi & Misi Kami
+              <span className="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
+                Visi & Misi Kami
+              </span>
             </h2>
-            <p className="mt-4 text-gray-800 max-w-2xl mx-auto">
+            <p className="mt-4 text-gray-700 max-w-2xl mx-auto">
               Komitmen kami dalam memberikan layanan pembuatan website dan
               aplikasi sistem yang inovatif, fungsional, dan bernilai.
             </p>
@@ -290,8 +292,9 @@ const Tentang = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {/* Visi */}
             <motion.div
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 200 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 50 }}
+              transition={{ duration: 2, type: "spring" }}
               className="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center text-center border border-gray-100 hover:shadow-2xl"
             >
               <div className="bg-blue-100 text-blue-600 p-4 rounded-full mb-6">
@@ -300,7 +303,7 @@ const Tentang = () => {
               <h3 className="text-2xl font-semibold text-gray-800 mb-4">
                 Visi
               </h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600 leading-relaxed">
                 Menjadi mitra digital terpercaya yang membantu bisnis berkembang
                 melalui solusi teknologi modern, inovatif, dan berkelanjutan.
               </p>
@@ -308,8 +311,9 @@ const Tentang = () => {
 
             {/* Misi */}
             <motion.div
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 200 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 50 }}
+              transition={{ duration: 2, delay: 0.2, type: "spring" }}
               className="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center text-center border border-gray-100 hover:shadow-2xl"
             >
               <div className="bg-green-100 text-green-600 p-4 rounded-full mb-6">
@@ -318,23 +322,30 @@ const Tentang = () => {
               <h3 className="text-2xl font-semibold text-gray-800 mb-4">
                 Misi
               </h3>
-              <ul className="text-gray-600 space-y-3 text-left">
-                <li>
-                  ✔ Memberikan layanan berkualitas dengan harga kompetitif
-                </li>
-                <li>✔ Menghadirkan desain modern & user-friendly</li>
-                <li>✔ Mengutamakan keamanan dan performa sistem</li>
-                <li>✔ Mendukung transformasi digital jangka panjang</li>
+              <ul className="text-gray-600 space-y-3 text-left w-full">
+                {[
+                  "Memberikan layanan berkualitas dengan harga kompetitif",
+                  "Menghadirkan desain modern & user-friendly",
+                  "Mengutamakan keamanan dan performa sistem",
+                  "Mendukung transformasi digital jangka panjang",
+                ].map((misi, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <span className="text-green-600 mt-1">✔</span>
+                    <span>{misi}</span>
+                  </li>
+                ))}
               </ul>
             </motion.div>
           </div>
         </section>
 
-        {/* Team Project */}
+        {/* Team Section */}
         <section className="relative py-20 px-6 bg-gradient-to-b from-blue-50 to-white">
           <div className="max-w-7xl mx-auto text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-800">
-              Meet Our Project Team
+              <span className="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
+                Meet Our Project Team
+              </span>
             </h2>
             <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
               Tim profesional yang berdedikasi dalam membangun solusi digital
@@ -346,15 +357,19 @@ const Tentang = () => {
             {team.map((member) => (
               <motion.div
                 key={member.id}
-                transition={{ type: "spring", stiffness: 200 }}
-                className="flex bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false }}
+                transition={{ duration: 0.6, type: "spring" }}
+                className="flex bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition"
               >
                 {/* Foto */}
                 <div className="w-1/3 bg-gradient-to-b from-primary to-secondary flex items-center justify-center">
-                  <img
+                  <motion.img
+                    whileHover={{ scale: 1.1 }}
                     src={member.image}
                     alt={member.name}
-                    className="w-28 h-28 object-cover rounded-full border-4 border-white shadow-md"
+                    className="w-28 h-28 object-cover rounded-full border-4 border-white shadow-md transition"
                   />
                 </div>
 
@@ -370,9 +385,12 @@ const Tentang = () => {
                     {member.school}
                   </p>
 
-                  <ul className="mt-4 text-sm text-gray-600 space-y-1">
+                  <ul className="mt-4 text-sm text-gray-600 space-y-2">
                     {member.details.map((d, i) => (
-                      <li key={i}>• {d}</li>
+                      <li key={i} className="flex items-start gap-2">
+                        <span className="text-primary mt-1">✔</span>
+                        <span>{d}</span>
+                      </li>
                     ))}
                   </ul>
                 </div>
@@ -383,19 +401,26 @@ const Tentang = () => {
 
         {/* Teknologi */}
         <section className="py-20 bg-gray-50" id="teknologi">
-          <div className="max-w-6xl mx-auto px-6 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-12">
-              Teknologi yang Kami Gunakan
-            </h2>
+          <div className="max-w-6xl mx-auto px-6 space-y-10 text-center">
+            {/* Judul */}
+            <div className="flex flex-col items-center">
+              <h1 className="text-lg md:text-xl lg:text-2xl font-bold text-gray-800">
+                <span className="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
+                  Teknologi Kami
+                </span>
+              </h1>
+              <p className="w-24 h-1 bg-primary mt-2 rounded"></p>
+            </div>
+
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6">
               {technologies.map((tech, index) => (
                 <motion.div
                   key={index}
-                  whileHover={{ scale: 1.1 }}
+                  whileHover={{ scale: 1.1, rotate: 1 }}
                   whileTap={{ scale: 0.95 }}
                   className="bg-white shadow-md rounded-xl p-6 flex flex-col items-center justify-center hover:shadow-lg transition"
                 >
-                  {tech.icon}
+                  <div className="text-3xl">{tech.icon}</div>
                   <h3 className="mt-3 text-sm md:text-base font-semibold text-gray-700">
                     {tech.title}
                   </h3>

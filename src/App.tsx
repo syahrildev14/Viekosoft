@@ -9,6 +9,7 @@ import LayananPage from "./pages/Layanan";
 import TentangPage from "./pages/Tentang";
 import FaqPage from "./pages/Faq";
 import TestimoniPage from "./pages/Testimoni";
+import ScrollToTop from "./components/ScrollOnTop";
 
 const App = () => {
   useEffect(() => {
@@ -21,6 +22,7 @@ const App = () => {
   return (
     <>
       <Router>
+        <ScrollToTop />
         <Routes>
           {/* Pages Routing */}
           <Route path="/" element={<HomePage />} />

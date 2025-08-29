@@ -16,7 +16,10 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header data-aos="fade-down" className="bg-white text-gray-500 sticky top-0 z-[99] shadow-sm">
+    <header
+      data-aos="fade-down"
+      className="bg-white text-gray-500 sticky top-0 z-[99] shadow-sm"
+    >
       <div className="mx-auto w-full flex items-center justify-between px-12 py-4">
         {/* Logo */}
         <span className="logo text-primary text-lg md:text-xl lg:text-2xl font-bold">
@@ -104,9 +107,15 @@ const Header = () => {
               <Facebook size={18} />
             </a>
           </div>
-          <Button className="w-full  mt-4 bg-white hover:bg-secondary hover:text-white duration-300 text-gray-700">
-            Kontak
-          </Button>
+          <a
+            href="https://wa.me/6287864005772" // ganti dengan nomor WA kamu (format internasional tanpa 0)
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button className="w-full mt-4 bg-white hover:bg-secondary hover:text-white duration-300 text-gray-700">
+              Kontak
+            </Button>
+          </a>
         </nav>
       </div>
     </header>

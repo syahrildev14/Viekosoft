@@ -144,7 +144,14 @@ const Layanan = () => {
       {/* Layanan Section */}
       <section className="mt-16 max-w-7xl mx-auto px-6">
         {/* Judul */}
-        <div className="flex flex-col items-center">
+        <motion.div
+          className="flex flex-col items-center"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 50 }} // animasi keluar
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+        >
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-800">
             Layanan Kami
           </h1>
@@ -154,12 +161,19 @@ const Layanan = () => {
             memenuhi kebutuhan, tetapi juga menghadirkan pengalaman terbaik bagi
             Anda.
           </p>
-        </div>
+        </motion.div>
 
         {/* Content & Carousel */}
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
           {/* Konten Box */}
-          <div className="grid md:grid-cols-2 gap-4">
+          <motion.div
+            className="grid md:grid-cols-2 gap-4"
+            initial={{ opacity: 0, x: -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -100 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
+          >
             {/* Mobile */}
             <div className="bg-primary text-white p-6 rounded-2xl shadow-md space-y-2 items-start gap-4">
               <Smartphone className="w-10 h-10 text-white" />
@@ -182,7 +196,7 @@ const Layanan = () => {
               </div>
             </div>
 
-            {/* Web (Full Width) */}
+            {/* Web */}
             <div className="bg-primary text-white p-6 rounded-2xl shadow-md space-y-2 items-start gap-4 md:col-span-2">
               <Globe className="w-10 h-10 text-white" />
               <div>
@@ -192,10 +206,16 @@ const Layanan = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Carousel */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 100 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
+          >
             <Swiper
               spaceBetween={20}
               centeredSlides={true}
@@ -205,7 +225,6 @@ const Layanan = () => {
               }}
               pagination={{ clickable: true }}
               modules={[Autoplay, Pagination]}
-              className=""
             >
               {images.map((src, idx) => (
                 <SwiperSlide key={idx}>
@@ -217,14 +236,21 @@ const Layanan = () => {
                 </SwiperSlide>
               ))}
             </Swiper>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* BPJS Section */}
       <section className="mt-32 flex flex-col-reverse lg:flex-row items-center lg:justify-evenly gap-12 p-8 lg:p-20 bg-primary">
         {/* Text */}
-        <div className="flex flex-col space-y-6 text-white max-w-3xl">
+        <motion.div
+          className="flex flex-col space-y-6 text-white max-w-3xl"
+          initial={{ opacity: 0, x: -100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -100 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+        >
           <h1 className="text-2xl sm:text-3xl lg:text-6xl font-bold leading-snug">
             Solusi Digital Rumah Sakit, Terhubung dengan BPJS Kesehatan
           </h1>
@@ -252,41 +278,77 @@ const Layanan = () => {
               Mendukung digitalisasi rumah sakit sesuai program pemerintah.
             </li>
           </ul>
-        </div>
+        </motion.div>
 
         {/* Image */}
-        <div className="flex justify-center">
-          <img
+        <motion.div
+          className="flex justify-center"
+          initial={{ opacity: 0, x: 100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 100 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+        >
+          <motion.img
             className="w-full max-w-sm sm:max-w-md lg:max-w-2xl"
             src={bpjsImg}
             alt="bpjs"
+            animate={{ y: [0, -15, 0] }} // animasi floating
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
           />
-        </div>
+        </motion.div>
       </section>
 
       {/*Daftar Layanan */}
-      <section className=" py-16 px-6 lg:mt-12">
+      <section className="py-16 px-6 lg:mt-12">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           {/* Left: List layanan */}
-          <div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.2 }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.2 }, // efek muncul satu per satu
+              },
+            }}
+          >
             <h2 className="text-xl text-primary font-semibold mb-6">
               Layanan yang Kami Tawarkan:
             </h2>
             <ul className="space-y-4">
               {services.map((service, index) => (
-                <li
+                <motion.li
                   key={index}
                   className="flex items-center gap-3 border-b border-gray-200 pb-2"
+                  variants={{
+                    hidden: { opacity: 0, x: -50 },
+                    visible: { opacity: 1, x: 0 },
+                  }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
                 >
                   <CheckCircle className="text-primary w-5 h-5" />
                   <span className="text-gray-800">{service}</span>
-                </li>
+                </motion.li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Right: CTA */}
-          <div className="text-center md:text-left space-y-6">
+          <motion.div
+            className="text-center md:text-left space-y-6"
+            initial={{ opacity: 0, x: 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 100 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+          >
             <p className="text-primary font-semibold">
               From Concept to Code – We Deliver Excellence.
             </p>
@@ -299,7 +361,7 @@ const Layanan = () => {
               Anda menuju solusi digital yang luar biasa.
             </p>
             <Button className="font-semibold text-lg">Start Now!</Button>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -307,10 +369,7 @@ const Layanan = () => {
       <section className="bg-white py-16 px-6 lg:mt-12">
         <div className="max-w-7xl mx-auto text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-            Keunggulan Layanan{" "}
-            <span className="text-primary">
-              Kami
-            </span>
+            Keunggulan Layanan <span className="text-primary">Kami</span>
           </h2>
           <p className="mt-4 text-gray-600">
             Kami memberikan solusi digital terbaik dengan teknologi terkini
@@ -318,11 +377,28 @@ const Layanan = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.2 }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: { staggerChildren: 0.2 }, // card muncul satu-satu
+            },
+          }}
+        >
           {advantages.map((item, index) => (
-            <div
+            <motion.div
               key={index}
               className="p-6 rounded-2xl shadow-lg bg-gray-50"
+              variants={{
+                hidden: { opacity: 0, scale: 0.8, y: 50 },
+                visible: { opacity: 1, scale: 1, y: 0 },
+              }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
             >
               <div className="flex justify-center items-center w-14 h-14 rounded-full bg-primary text-white mx-auto mb-4">
                 <item.icon className="w-7 h-7" />
@@ -331,13 +407,11 @@ const Layanan = () => {
                 {item.title}
               </h3>
               <p className="mt-2 text-gray-800 text-sm">{item.desc}</p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </section>
-      <section>
-        
-      </section>
+      <section></section>
     </Layout>
   );
 };
