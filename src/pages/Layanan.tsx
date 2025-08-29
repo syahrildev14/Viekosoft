@@ -2,7 +2,16 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { motion } from "framer-motion";
 
 import { Pagination, Autoplay } from "swiper/modules";
-import { Smartphone, Monitor, Globe } from "lucide-react";
+import {
+  Smartphone,
+  Monitor,
+  Globe,
+  CheckCircle,
+  ShieldCheck,
+  Zap,
+  Users,
+  Layers,
+} from "lucide-react";
 
 import Layout from "../layouts/MainLayout";
 import mobile1 from "../assets/images/iphone.png";
@@ -11,8 +20,41 @@ import slide1 from "../assets/images/slide1.png";
 import slide2 from "../assets/images/slide1.png";
 import slide3 from "../assets/images/slide1.png";
 import bpjsImg from "../assets/images/bpjs.png";
+import Button from "../components/Button";
 
 const images = [slide1, slide2, slide3];
+const services = [
+  "MOBILE APP DEVELOPMENT (ANDROID & IOS)",
+  "WEB APPLICATION DEVELOPMENT",
+  "E-COMMERCE SOLUTIONS",
+  "CUSTOM SOFTWARE DEVELOPMENT",
+  "API INTEGRATION SERVICES",
+  "UI/UX DESIGN",
+  "SIMRS",
+];
+
+const advantages = [
+  {
+    icon: ShieldCheck,
+    title: "Keamanan Terjamin",
+    desc: "Sistem dibangun dengan standar keamanan tinggi untuk melindungi data dan transaksi Anda.",
+  },
+  {
+    icon: Zap,
+    title: "Performa Cepat",
+    desc: "Aplikasi dan website berjalan dengan performa optimal sehingga pengguna lebih nyaman.",
+  },
+  {
+    icon: Users,
+    title: "User Friendly",
+    desc: "Tampilan modern dengan desain UI/UX yang mudah dipahami oleh semua kalangan.",
+  },
+  {
+    icon: Layers,
+    title: "Custom & Skalabel",
+    desc: "Solusi disesuaikan dengan kebutuhan bisnis Anda dan dapat berkembang seiring waktu.",
+  },
+];
 
 const Layanan = () => {
   return (
@@ -80,7 +122,6 @@ const Layanan = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false, amount: 0.2 }}
-              transition={{ staggerChildren: 0.3 }} // animasi muncul satu per satu
               variants={{
                 hidden: { opacity: 0, x: 100 },
                 visible: {
@@ -181,7 +222,7 @@ const Layanan = () => {
       </section>
 
       {/* BPJS Section */}
-      <section className="mt-24 flex flex-col-reverse lg:flex-row items-center lg:justify-evenly gap-12 p-8 lg:p-20 bg-primary">
+      <section className="mt-32 flex flex-col-reverse lg:flex-row items-center lg:justify-evenly gap-12 p-8 lg:p-20 bg-primary">
         {/* Text */}
         <div className="flex flex-col space-y-6 text-white max-w-3xl">
           <h1 className="text-2xl sm:text-3xl lg:text-6xl font-bold leading-snug">
@@ -221,6 +262,81 @@ const Layanan = () => {
             alt="bpjs"
           />
         </div>
+      </section>
+
+      {/*Daftar Layanan */}
+      <section className=" py-16 px-6 lg:mt-12">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          {/* Left: List layanan */}
+          <div>
+            <h2 className="text-xl text-primary font-semibold mb-6">
+              Layanan yang Kami Tawarkan:
+            </h2>
+            <ul className="space-y-4">
+              {services.map((service, index) => (
+                <li
+                  key={index}
+                  className="flex items-center gap-3 border-b border-gray-200 pb-2"
+                >
+                  <CheckCircle className="text-primary w-5 h-5" />
+                  <span className="text-gray-800">{service}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Right: CTA */}
+          <div className="text-center md:text-left space-y-6">
+            <p className="text-primary font-semibold">
+              From Concept to Code – We Deliver Excellence.
+            </p>
+            <h3 className="text-3xl md:text-4xl font-bold leading-snug">
+              Let’s Build Your <span className="text-primary">Application</span>{" "}
+              Today!
+            </h3>
+            <p className="text-gray-600">
+              Hubungi kami sekarang untuk konsultasi GRATIS dan mulai perjalanan
+              Anda menuju solusi digital yang luar biasa.
+            </p>
+            <Button className="font-semibold text-lg">Start Now!</Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Keunggulan Layanan */}
+      <section className="bg-white py-16 px-6 lg:mt-12">
+        <div className="max-w-7xl mx-auto text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
+            Keunggulan Layanan{" "}
+            <span className="text-primary">
+              Kami
+            </span>
+          </h2>
+          <p className="mt-4 text-gray-600">
+            Kami memberikan solusi digital terbaik dengan teknologi terkini
+            untuk mendukung pertumbuhan bisnis Anda.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+          {advantages.map((item, index) => (
+            <div
+              key={index}
+              className="p-6 rounded-2xl shadow-lg bg-gray-50"
+            >
+              <div className="flex justify-center items-center w-14 h-14 rounded-full bg-primary text-white mx-auto mb-4">
+                <item.icon className="w-7 h-7" />
+              </div>
+              <h3 className="text-lg font-semibold text-gray-800">
+                {item.title}
+              </h3>
+              <p className="mt-2 text-gray-800 text-sm">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+      <section>
+        
       </section>
     </Layout>
   );
