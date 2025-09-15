@@ -1,6 +1,37 @@
 import { ChevronDown } from "lucide-react";
+import Swal from "sweetalert2";
 
 const Footer = () => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    // submit manual ke action
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    fetch(form.action, {
+      method: form.method,
+      body: formData,
+    })
+      .then(() => {
+        Swal.fire({
+          icon: "success",
+          title: "Pesan terkirim!",
+          text: "Terima kasih, kami akan segera menghubungi Anda.",
+          confirmButtonColor: "#3B82F6", // warna primary (sesuaikan tailwind)
+        });
+        form.reset();
+      })
+      .catch(() => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Pesan gagal dikirim, silakan coba lagi.",
+          confirmButtonColor: "#EF4444",
+        });
+      });
+  };
+
   return (
     <footer className="bg-gray-900 text-gray-300 py-16 px-6 mt-20">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
@@ -16,7 +47,7 @@ const Footer = () => {
         {/* Quick Links */}
         <div>
           <h3 className="text-xl font-semibold text-white mb-4">
-            Tautan Cepat
+            Menu
           </h3>
           <ul className="space-y-2">
             <li>
@@ -73,12 +104,13 @@ const Footer = () => {
             action="https://pesan.heruoktafian.com"
             acceptCharset="UTF-8"
             method="post"
+            onSubmit={handleSubmit}
           >
             {/* hidden authenticity token */}
             <input
               type="hidden"
               name="authenticity_token"
-              value="Fz6qCQklz3Fj6b2ot8QJcHzDQ8O5fZr3S1k6DIVIUSqJQGd_vciq0Wm2JiA_f9KLOjiq1-zOQnLYJmNLGWeB5Q"
+              value="ibTcFLe2Dffu90apdkpyG0KbJevPVaHlFlxeJd2gMKOfvXouE8VejQ1EoVE-xjuu6RRowns_lkGQKdjvYKFXkg"
               autoComplete="off"
             />
 
@@ -93,8 +125,8 @@ const Footer = () => {
               <input
                 placeholder="Nama Anda"
                 required
-                className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 
-                     text-white placeholder-white/70 focus:outline-none focus:border-white"
+                className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-600 
+                     text-white placeholder-gray-400 focus:outline-none focus:border-primary"
                 type="text"
                 name="name"
                 id="name"
@@ -112,8 +144,8 @@ const Footer = () => {
               <input
                 placeholder="email@anda.com"
                 required
-                className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 
-                     text-white placeholder-white/70 focus:outline-none focus:border-white"
+                className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-600 
+                     text-white placeholder-gray-400 focus:outline-none focus:border-primary"
                 type="email"
                 name="email"
                 id="email"
@@ -125,23 +157,31 @@ const Footer = () => {
               <label className="block text-white mb-1" htmlFor="project_type">
                 Pilih jenis project
               </label>
-              <select
-                className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 
-                     text-white placeholder-white/70 focus:outline-none focus:border-white"
-                name="project_type"
-                id="project_type"
-                required
-                defaultValue=""
-              >
-                <option value="" disabled>
-                  Pilih jenis project
-                </option>
-                <option value="web">Web Development</option>
-                <option value="mobile">Mobile App</option>
-                <option value="fullstack">Full Stack Development</option>
-                <option value="uiux">UI/UX Design</option>
-                <option value="consultation">Konsultasi Teknis</option>
-              </select>
+              <div className="relative">
+                <select
+                  className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-600 
+                 text-white focus:outline-none focus:border-primary appearance-none pr-10"
+                  name="project_type"
+                  id="project_type"
+                  required
+                  defaultValue=""
+                >
+                  <option value="" disabled>
+                    Pilih jenis project
+                  </option>
+                  <option value="web">Web Development</option>
+                  <option value="mobile">Mobile App</option>
+                  <option value="fullstack">Full Stack Development</option>
+                  <option value="uiux">UI/UX Design</option>
+                  <option value="consultation">Konsultasi Teknis</option>
+                </select>
+
+                {/* Icon di kanan */}
+                <ChevronDown
+                  size={20}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"
+                />
+              </div>
             </div>
 
             {/* Pesan */}
@@ -155,23 +195,22 @@ const Footer = () => {
               <textarea
                 rows={4}
                 required
-                className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 
-                     text-white placeholder-white/70 focus:outline-none focus:border-white"
+                className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-600 
+                     text-white placeholder-gray-400 focus:outline-none focus:border-primary"
                 name="message"
                 id="message"
               />
             </div>
 
-            {/* Tombol Submit */}
+            {/* Tombol Submit dengan Icon Arrow */}
             <div>
-              <input
+              <button
                 type="submit"
-                name="commit"
-                value="Kirim Pesan"
-                className="w-full bg-white text-blue-600 py-3 rounded-lg font-semibold 
-                     hover:bg-gray-100 transition-colors cursor-pointer"
-                data-disable-with="Kirim Pesan"
-              />
+                className="w-full flex items-center justify-center gap-2 bg-primary text-white py-3 rounded-lg font-semibold 
+                     hover:bg-primary/90 transition-colors"
+              >
+                Kirim Pesan
+              </button>
             </div>
           </form>
         </div>

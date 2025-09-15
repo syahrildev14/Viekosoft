@@ -150,7 +150,14 @@ const Home = () => {
 
             {/* Button */}
             <div data-aos="zoom-in-down" className="mt-6">
-              <Button className="px-6 py-3 text-sm sm:text-base relative z-[50] hover:scale-105 transition-transform">
+              <Button
+                onClick={() => {
+                  document
+                    .getElementById("layanan")
+                    ?.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="px-6 py-3 text-sm sm:text-base relative z-[50] hover:scale-105 transition-transform"
+              >
                 Learn More
               </Button>
             </div>
@@ -168,7 +175,10 @@ const Home = () => {
         </div>
 
         {/* Layanan Section */}
-        <section className="bg-blue-50 px-4 py-12 sm:py-16 lg:py-20">
+        <section
+          id="layanan"
+          className="bg-blue-50 px-4 py-12 sm:py-16 lg:py-20"
+        >
           {/* title */}
           <motion.div
             initial={{ opacity: 0, y: 100 }}
@@ -327,8 +337,17 @@ const Home = () => {
               nostrum quidem eligendi error velit ducimus eaque maiores possimus
               ratione magnam enim voluptatem? Ex, odio illum.
             </p>
-            <Button className="px-6 py-3 text-sm sm:text-base relative z-[50] hover:scale-105 transition-transform">
-              Mulai Bergabung
+            <Button
+              className="px-6 py-3 text-sm sm:text-base relative z-[50] hover:scale-105 transition-transform flex items-center gap-2"
+              asChild
+            >
+              <a
+                href="https://wa.me/6285182267460?text=Halo%20saya%20ingin%20bergabung"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Mulai Bergabung
+              </a>
             </Button>
           </motion.div>
 

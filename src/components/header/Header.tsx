@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from "../Button";
 import { Link, useLocation } from "react-router-dom";
-import { Instagram, Facebook, AlignCenter, X } from "lucide-react";
+import { AlignCenter, X } from "lucide-react";
 
 const navItems = [
   { name: "Home", path: "/" },
@@ -51,18 +51,12 @@ const Header = () => {
         {/* Desktop Sosmed + Button */}
         <div className="hidden md:flex items-center gap-2">
           <a
-            href="#"
-            className="text-gray-500 p-3 rounded-full border hover:bg-gray-100 duration-200"
+            href="https://wa.me/6285182267460?"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <Instagram size={18} />
+            <Button>Kontak</Button>
           </a>
-          <a
-            href="#"
-            className="text-gray-500 p-3 rounded-full border  hover:bg-gray-100 duration-200"
-          >
-            <Facebook size={18} />
-          </a>
-          <Button>Kontak</Button>
         </div>
 
         {/* Mobile Hamburger */}
@@ -93,20 +87,7 @@ const Header = () => {
               {item.name}
             </Link>
           ))}
-          <div className="flex gap-3 mt-4">
-            <a
-              href="#"
-              className="text-gray-500 p-3 rounded-full border hover:bg-gray-100"
-            >
-              <Instagram size={18} />
-            </a>
-            <a
-              href="#"
-              className="text-gray-500 p-3 rounded-full border hover:bg-gray-100 duration-200"
-            >
-              <Facebook size={18} />
-            </a>
-          </div>
+          <div className="flex gap-3 mt-4"></div>
           <a
             href="https://wa.me/6287864005772" // ganti dengan nomor WA kamu (format internasional tanpa 0)
             target="_blank"

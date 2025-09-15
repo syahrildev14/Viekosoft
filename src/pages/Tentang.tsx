@@ -157,8 +157,17 @@ const Tentang = () => {
                 melalui solusi digital inovatif dan terpercaya.
               </p>
               <div className="flex gap-4 justify-center md:justify-start">
-                <Button className="px-6 py-3 rounded-full  text-white shadow font-semibold">
-                  Hubungi Kami
+                <Button
+                  className="px-6 py-3 text-sm sm:text-base relative z-[50] hover:scale-105 transition-transform flex items-center gap-2"
+                  asChild
+                >
+                  <a
+                    href="https://wa.me/6285182267460?"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Hubungi Kami
+                  </a>
                 </Button>
               </div>
             </motion.div>

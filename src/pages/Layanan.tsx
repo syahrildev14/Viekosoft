@@ -90,14 +90,17 @@ const Layanan = () => {
               Friendly & Human Touch
             </motion.h1>
 
-            <motion.p className="text-base md:text-lg opacity-90 leading-relaxed">
+            <motion.p className="text-base md:text-lg opacity-90 leading-relaxed max-w-2xl">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero
               voluptatum necessitatibus totam, dolorum cumque explicabo
               similique optio minima molestiae culpa hic possimus error
             </motion.p>
 
-            <motion.button
-              className="px-6 py-3 bg-white text-primary font-semibold rounded-xl shadow-md hover:bg-gray-100 transition"
+            <motion.a
+              href="https://wa.me/6285182267460"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-8 py-3 bg-white text-primary font-semibold rounded-full shadow-lg hover:bg-gray-100 hover:shadow-md transition duration-300"
               variants={{
                 hidden: { opacity: 0, scale: 0.8 },
                 visible: { opacity: 1, scale: 1 },
@@ -110,7 +113,7 @@ const Layanan = () => {
               }}
             >
               Mulai Sekarang
-            </motion.button>
+            </motion.a>
           </motion.div>
 
           {/* Image */}
@@ -360,7 +363,18 @@ const Layanan = () => {
               Hubungi kami sekarang untuk konsultasi GRATIS dan mulai perjalanan
               Anda menuju solusi digital yang luar biasa.
             </p>
-            <Button className="font-semibold text-lg">Start Now!</Button>
+            <Button
+              asChild
+              className="px-8 py-3 font-semibold text-lg bg-white text-primary rounded-full shadow-lg hover:bg-gray-100 hover:shadow-md transition duration-300"
+            >
+              <a
+                href="https://wa.me/6285182267460"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Start Now!
+              </a>
+            </Button>
           </motion.div>
         </div>
       </section>
